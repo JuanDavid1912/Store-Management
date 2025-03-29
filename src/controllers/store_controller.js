@@ -16,11 +16,12 @@ const validateRegister = Joi.object({
         'string:max':'The address must have at least {#limit}.',
         'any.required': 'The address is mandatory.'
       }),
-    phone: Joi.number().integer().min(10).max(16).required().messages({
+      //this min and max values are valid for Colombia, because all valid phone numbers start with 3
+    phone: Joi.number().integer().min(300000000).max(399999999).required().messages({
         'number.base': 'The phone must be a number.',
         'number.integer': 'The phone must be an integer.',
-        'number.min': 'The phone should have at least {#limit}.',
-        'number.max': 'the age cannot be greater than {#limit}.',
+        'number.min': 'The phone should be a valid number.',
+        'number.max': 'the phone should be a valid number.',
         'any.required': 'The phone is mandatory.'
       })
   });
@@ -44,27 +45,31 @@ const validateRegister = Joi.object({
       }
   
       const { name, address, phone} = req.body;
-      
+      //al ser autoincrementable esto no es necesario
       const storeExist = await Store.findByPk(id);
       
       if (storeExist) {
-        return res.status(400).json({ mensaje: 'the store already exists',resultado:null });
+        return res.status(400).json(
+        { 
+          message: 'the store already exists',
+          result: null 
+        });
       }
   
-      const newStore = await Store.create({ name,address,phone });
+      const newStore = await Store.create({ name, address, phone });
       res.status(201).json(
         { 
-          mensaje:'Store created',
-          resultado: {
+          message:'Store created',
+          result: {
             id:newStore.id,
             name:newStore.name,
             address:newStore.address,
             phone:newStore.phone,
-            erroresValidacion: ''
+            validationErrors: ''
           }
       });
     } catch (error) {
-      res.status(400).json({ message: error.message,resultado:null});
+      res.status(400).json({ message: error.message,result: null});
     }
   };
   
@@ -77,42 +82,42 @@ const validateRegister = Joi.object({
     }
   };
   
-  const actualizarUsuario = async (req, res) => {
+  const updateStore = async (req, res) => {
     try {
-      const { cedula } = req.params;
-      const { email, nombre, edad } = req.body;
-      const usuario = await Usuario.findByPk(cedula);
+      const { id } = req.params;
+      const { name, address, phone } = req.body;
+      const store = await Store.findByPk(id);
       
-      if (!usuario) {
-        return res.status(404).json({ mensaje: 'Usuario no encontrado', resultado: null });
+      if (!store) {
+        return res.status(404).json({ message: 'The store does not exist', result: null });
       }
       
-      const nuevoUsuario = await Usuario.update({ email, nombre, edad });
-      res.status(200).json({ mensaje: 'Usuario actualizado', resultado: nuevoUsuario });
+      const newStore = await Store.update({ name, address, phone });
+      res.status(200).json({ message: 'Store updated', result: newStore });
     } catch (error) {
-      res.status(500).json({ mensaje: error.message, resultado: null });
+      res.status(500).json({ message: error.message, result: null });
     }
   };
   
-  const borrarUsuario = async (req, res) => {
+  const deleteStore = async (req, res) => {
     try {
-      const { cedula } = req.params;
-      const usuario = await Usuario.findByPk(cedula);
+      const { id } = req.params;
+      const store = await Store.findByPk(id);
       
-      if (!usuario) {
-        return res.status(404).json({ mensaje: 'Usuario no encontrado', resultado: null });
+      if (!store) {
+        return res.status(404).json({ message: 'The store does not exist', result: null });
       }
       
-      const borrarUsuario = await Usuario.destroy();
-      res.status(200).json({ mensaje: 'Usuario eliminado', resultado: borrarUsuario });
+      const deleteStore = await Store.destroy(id);
+      res.status(200).json({ mensage: 'Store deleted', result: deleteStore });
     } catch (error) {
-      res.status(500).json({ mensaje: error.message, resultado: null });
+      res.status(500).json({ message: error.message, result: null });
     }
   };
   
   module.exports = {
       registerStore,
       listStores,
-      actualizarUsuario,
-      borrarUsuario
+      updateStore,
+      deleteStore
   };

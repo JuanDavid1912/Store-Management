@@ -1,5 +1,5 @@
 const definePurchaseClient = (sequelize,DataTypes) => {
-    return sequelize.define('purchaseclient',{
+    return sequelize.define('Purchaseclient',{
         id:{
             type:DataTypes.INTEGER,
             primaryKey:true,

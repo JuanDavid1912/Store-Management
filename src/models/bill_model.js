@@ -1,5 +1,5 @@
 const defineBill=(sequelize, DataTypes) => {
-    return sequelize.define('bill',{
+    return sequelize.define('Bill',{
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -8,7 +8,7 @@ const defineBill=(sequelize, DataTypes) => {
             allowNull: false
         },
         productos:{
-            type:DataTypes.JSON
+            type:DataTypes.STRING
         },
         total:{
             type:DataTypes.INTEGER

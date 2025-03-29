@@ -1,5 +1,5 @@
 const defineClient = (Sequelize,DataTypes) => {
-    return Sequelize.define('client',{
+    return Sequelize.define('Client',{
         id:{
             type: DataTypes.STRING,
             primaryKey: true,

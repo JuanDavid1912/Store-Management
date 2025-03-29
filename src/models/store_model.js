@@ -1,5 +1,5 @@
 const defineStore = (Sequelize, DataTypes) => {
-    return Sequelize.define('store',{
+    return Sequelize.define('Store',{
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,

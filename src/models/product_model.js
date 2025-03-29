@@ -1,10 +1,11 @@
 const defineProduct = (sequelize, DataTypes) => {
-    return sequelize.define('product',{
+    return sequelize.define('Product',{
         id:{
-            type:DataTypes.STRING,
+            type:DataTypes.INTEGER,
             primaryKey:true,
             unique: true,
-            allowNull:false
+            allowNull:false,
+            autoincrement:true
         },
         name:{
             type:DataTypes.STRING,
