@@ -2,12 +2,12 @@ const {Client} = require('../database/index');
 const Joi = require('joi');
 
 const validateRegister = Joi.object({
-    id: Joi.string().min(8).max(15).required.messages({
-      'string.base': 'La cédula debe ser un texto.',
-      'string.empty': 'La cédula es obligatoria.',
-      'string.min': 'La cédula debe tener al menos {#limit} caracteres.',
-      'string.max': 'La cédula no puede tener más de {#limit} caracteres.',
-      'any.required': 'La cédula es un campo obligatorio.'
+    id: Joi.number().integer().min(8).max(15).positive().required().messages({
+        'number.base': 'The id must be a number.',
+        'number.integer': 'The id must be an integer.',
+        'number.min': 'The id should be a valid number.',
+        'number.max': 'the id should be a valid number.',
+        'any.required': 'The id is mandatory.'
     }),
     name: Joi.string().min(2).max(50).required().messages({
         'string.base': 'The name has to be a text.',

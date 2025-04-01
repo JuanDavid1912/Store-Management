@@ -13,7 +13,7 @@ const defineStoresClients = (sequelize, DataTypes) =>{
             }
         },
         id_client:{
-            type:DataTypes.STRING,
+            type:DataTypes.INTEGER,
             references:{
                 model:'client',
                 key:'id'

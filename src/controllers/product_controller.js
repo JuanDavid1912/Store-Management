@@ -32,7 +32,7 @@ const validateRegister = Joi.object({
         'number.integer': 'The stock must be an integer.',
         'any.required': 'The stock is mandatory.'
     }),
-    id_store: Joi.number().required().messages({
+    id_store: Joi.number().integer().required().messages({
         'number.integer': 'The store id must be an integer number',
         'number.positive': 'The store id must be positive',
         'any.required': 'The store id is mandatory'
