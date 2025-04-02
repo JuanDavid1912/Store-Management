@@ -19,7 +19,7 @@ const validateRegister = Joi.object({
         'number.positive': 'The price must be positive',
         'any.required': 'The price is mandatory'
     }),
-    description: Joi.string().email().max(255).required().messages({
+    description: Joi.string().max(255).required().messages({
         'string.base': 'The description has to be a text.',
         'string.empty': 'The description is mandatory.',
         'string:max':'The description must have at least {#limit}.',

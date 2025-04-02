@@ -2,7 +2,7 @@ const {Client} = require('../database/index');
 const Joi = require('joi');
 
 const validateRegister = Joi.object({
-    id: Joi.number().integer().min(8).max(15).positive().required().messages({
+    id: Joi.number().integer().min(100000).max(9999999999999999999).positive().required().messages({
         'number.base': 'The id must be a number.',
         'number.integer': 'The id must be an integer.',
         'number.min': 'The id should be a valid number.',

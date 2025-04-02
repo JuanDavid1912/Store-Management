@@ -4,17 +4,30 @@ const defineBill=(sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoincrement: true,
-            unique:true,
+            unique:true,                                   
             allowNull: false
         },
-        productos:{
-            type:DataTypes.STRING
+        products:{
+            type:DataTypes.STRING,
+            allowNull: true
         },
         total:{
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            allowNull: true
         },
-        date:{
-            type: DataTypes.DATE
+        id_store:{
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'store',
+                key: 'id'
+            }
+        },
+        id_client:{
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'client',
+                key: 'id'
+            }
         }
     },{
         tableName:'bill',

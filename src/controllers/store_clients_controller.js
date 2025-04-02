@@ -31,11 +31,8 @@ const validateRegister = Joi.object({
         {
             message: 'errors in the validation',
             result: {
-              id:'',
-              price:'',
-              description:'',
-              stock:'',
               id_store:'',
+              id_client:'',
               validationErrors: errorMessages
             }
         });

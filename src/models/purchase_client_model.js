@@ -6,7 +6,7 @@ const definePurchaseClient = (sequelize,DataTypes) => {
             autoIncrement:true,
             allowNull:false
         },
-        id_bill:{
+        id_bill:{                                                
             type: DataTypes.INTEGER,
             references:{
                 model:'bill',
@@ -29,10 +29,6 @@ const definePurchaseClient = (sequelize,DataTypes) => {
         },
         quantity:{
             type:DataTypes.INTEGER,
-            allowNull:false
-        },
-        date:{
-            type:DataTypes.DATE,
             allowNull:false
         },
         total:{
