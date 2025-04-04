@@ -84,9 +84,9 @@ const validateRegister = Joi.object({
   
   const updateStore = async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id_store } = req.params;
       const { name, address, phone } = req.body;
-      const store = await Store.findByPk(id);
+      const store = await Store.findByPk(id_store);
       
       if (!store) {
         return res.status(404).json({ message: 'The store does not exist', result: null });
@@ -101,8 +101,8 @@ const validateRegister = Joi.object({
   
   const deleteStore = async (req, res) => {
     try {
-      const { id } = req.params;
-      const store = await Store.findByPk(id);
+      const { id_store } = req.params;
+      const store = await Store.findByPk(id_store);
       
       if (!store) {
         return res.status(404).json({ message: 'The store does not exist', result: null });

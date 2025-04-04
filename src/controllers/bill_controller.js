@@ -88,14 +88,14 @@ const validateRegister = Joi.object({
   
   const deleteBill = async (req, res) => {
     try {
-      const { id } = req.params;
-      const bill = await Bill.findByPk(id);
+      const { id_bill } = req.params;
+      const bill = await Bill.findByPk(id_bill);
       
       if (!bill) {
         return res.status(404).json({ message: 'The bill does not exist', result: null });
       }
       
-      const deleteBill = await Bill.destroy(id);
+      const deleteBill = await Bill.destroy(id_bill);
       res.status(200).json({ message: 'The bill has been deleted', result: deleteBill });
     } catch (error) {
       res.status(500).json({ message: error.message, result: null });
