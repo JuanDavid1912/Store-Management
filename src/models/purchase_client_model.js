@@ -14,14 +14,14 @@ const definePurchaseClient = (sequelize,DataTypes) => {
             }
         },
         id_client:{
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references:{
                 model:'client',
                 key:'id'
             }
         },
         id_product:{
-            type:DataTypes.STRING,
+            type:DataTypes.INTEGER,
             references:{
                 model:'product',
                 key:'id'

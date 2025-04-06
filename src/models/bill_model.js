@@ -34,4 +34,6 @@ const defineBill=(sequelize, DataTypes) => {
         timestamps: true
     });
 };
+
+
 module.exports = defineBill;

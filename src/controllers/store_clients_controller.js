@@ -7,13 +7,13 @@ const Joi = require('joi');
 
 const validateRegister = Joi.object({
     
-    id_store: Joi.number().integer().min(1).positive().required().messages({
+    id_store: Joi.number().min(1).positive().required().messages({
         'number.integer': 'The id must be an integer number',
         'number.min': 'The id must be higher than {#limit}',
         'number.positive': 'The id must be positive',
         'any.required': 'The id is mandatory'
     }),
-    id_client: Joi.number().integer().min(1).positive().required().messages({
+    id_client: Joi.number().min(1).positive().required().messages({
         'number.integer': 'The id must be an integer number',
         'number.min': 'The id must be higher than {#limit}',
         'number.positive': 'The id must be positive',

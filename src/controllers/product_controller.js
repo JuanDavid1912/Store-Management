@@ -13,7 +13,7 @@ const validateRegister = Joi.object({
         'string:max':'The name must have at least {#limit}.',
         'any.required': 'The name is mandatory.'
     }),
-    price: Joi.number().integer().min(1).positive().required().messages({
+    price: Joi.number().min(1).positive().required().messages({
         'number.integer': 'The price must be an integer number',
         'number.min': 'The price must be higher than {#limit}',
         'number.positive': 'The price must be positive',
@@ -25,14 +25,14 @@ const validateRegister = Joi.object({
         'string:max':'The description must have at least {#limit}.',
         'any.required': 'The description is mandatory.'
     }),
-    stock: Joi.number().integer().min(1).positive().required().messages({
+    stock: Joi.number().min(1).positive().required().messages({
         'number.base': 'The stock must be a number.',
         'number.positive': 'The stock must be a positive',
         'number.min': 'The stock must be higher than 0',
         'number.integer': 'The stock must be an integer.',
         'any.required': 'The stock is mandatory.'
     }),
-    id_store: Joi.number().integer().required().messages({
+    id_store: Joi.number().required().messages({
         'number.integer': 'The store id must be an integer number',
         'number.positive': 'The store id must be positive',
         'any.required': 'The store id is mandatory'

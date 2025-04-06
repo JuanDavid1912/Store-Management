@@ -2,7 +2,7 @@ const {Client} = require('../database/index');
 const Joi = require('joi');
 
 const validateRegister = Joi.object({
-    id: Joi.number().integer().min(100000).max(9999999999999999999).positive().required().messages({
+    id: Joi.number().min(100000).max(999999999999999).positive().required().messages({
         'number.base': 'The id must be a number.',
         'number.integer': 'The id must be an integer.',
         'number.min': 'The id should be a valid number.',
@@ -29,7 +29,7 @@ const validateRegister = Joi.object({
         'number.base': 'The phone must be a number.',
         'number.integer': 'The phone must be an integer.',
         'number.min': 'The phone should have at least {#limit}.',
-        'number.max': 'the age cannot be greater than {#limit}.',
+        'number.max': 'the phone cannot be greater than {#limit}.',
         'any.required': 'The phone is mandatory.'
     })
   });

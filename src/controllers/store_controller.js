@@ -17,7 +17,7 @@ const validateRegister = Joi.object({
         'any.required': 'The address is mandatory.'
       }),
       //this min and max values are valid for Colombia, because all valid phone numbers start with 3
-    phone: Joi.number().integer().min(300000000).max(399999999).required().messages({
+    phone: Joi.number().min(300000000).max(399999999).required().messages({
         'number.base': 'The phone must be a number.',
         'number.integer': 'The phone must be an integer.',
         'number.min': 'The phone should be a valid number.',

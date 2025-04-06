@@ -24,7 +24,7 @@ const defineProduct = (sequelize, DataTypes) => {
             allowNull:false
         },
         id_store:{
-          type: DataTypes.STRING,
+          type: DataTypes.INTEGER,
           references: {
               model: 'store',
               key: 'id'

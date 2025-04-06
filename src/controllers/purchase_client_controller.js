@@ -3,25 +3,26 @@ const Product = require('../database/index');
 const PurchaseClient = require('../database/index');
 const Bill = require('../database/index');
 const Client = require('../database/index');
+const Joi = require('joi');
 
 
 //id_bill id_client id_product quantity total
 const validateRegister = Joi.object({
-    id_bill: Joi.number().integer().positive().required().messages({
+    id_bill: Joi.number().positive().required().messages({
         'number.base': 'The id must be a number.',
         'number.integer': 'The id must be an integer.',
         'number.min': 'The id should be a valid number.',
         'number.max': 'the id should be a valid number.',
         'any.required': 'The id is mandatory.'
     }),
-    id_client: Joi.number().integer().positive().required().messages({
+    id_client: Joi.number().positive().required().messages({
         'string.base': 'The name has to be a text.',
         'string.empty': 'The name is mandatory.',
         'string.min': 'The name must have at least {#limit}.',
         'string:max':'The name must have at least {#limit}.',
         'any.required': 'The name is mandatory.'
     }),
-    id_product: Joi.number().integer().positive().required().messages({
+    id_product: Joi.number().positive().required().messages({
         'string.base': 'The email has to be a text.',
         'string.empty': 'The email is mandatory.',
         'string.email': 'The email should be a valid one.',
@@ -29,14 +30,14 @@ const validateRegister = Joi.object({
         'string:max':'The email must have at least {#limit}.',
         'any.required': 'The address is mandatory.'
     }),
-    quantity: Joi.number().integer().positive().required().messages({
+    quantity: Joi.number().positive().required().messages({
         'number.base': 'The phone must be a number.',
         'number.integer': 'The phone must be an integer.',
         'number.min': 'The phone should have at least {#limit}.',
         'number.max': 'the age cannot be greater than {#limit}.',
         'any.required': 'The phone is mandatory.'
     }),
-    total: Joi.number().integer().positive().required().messages({
+    total: Joi.number().positive().required().messages({
         'number.base': 'The phone must be a number.',
         'number.integer': 'The phone must be an integer.',
         'number.min': 'The phone should have at least {#limit}.',
